@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5000
 
 connectDB()
 .then(() => {
+    app.on("error", (error) => {
+        console.log("ERROR", error)
+        throw error
+    })
+
     app.listen(PORT, () => {
         console.log(`Server is runing on port ${PORT}`)
     })
@@ -17,4 +22,3 @@ connectDB()
 .catch((error) => {
     console.log(`MongoDB connection Faield: ${error}`)
 })
-
